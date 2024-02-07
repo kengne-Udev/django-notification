@@ -1,0 +1,55 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none!important;
+    color: #fff!important;
+}
+
+.nav-bg {
+    background-color: rgba(26, 132, 219, 0.918);
+    color: #fff;
+}
+
+.icon-count {
+    font-size: 8px;
+}
+
+i {
+    color: gray;
+    font-size: 20px;
+}
+
+i:hover {
+    color: black;
+}
+
+.bg-notify {
+    /* Define initial styles */
+    background-color: rgb(38, 37, 43);
+    color: #fff;
+    border: 1px solid rgb(38, 37, 43);
+    border-radius: 10px;
+    transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+}
+
+.bg-notify:hover {
+    background-color: rgba(19, 107, 56, 0.829);
+    border-color:rgba(19, 107, 56, 0.829);
+}
+
+.form-input {
+    border: 1px solid #fff;
+    width: 40%;
+    display: flex;
+    margin: auto;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.form-control.email:focus {
+    outline: none;
+}

@@ -1,0 +1,76 @@
+{% extends 'index.html' %}
+{% load static %}
+
+
+{% block content %}
+    <section class="bg-notify text-center py-5 my-4">
+        <div class="container">
+            <h2 class="py-2">TEST NOTIFICATION</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae voluptates sint nihil corporis accusamus vel voluptate vero et, 
+                pariatur ipsam voluptatem laudantium quasi, at consequatur libero vitae, dolorem molestias ea.
+            </p>
+        </div>
+
+        <div class="border form-input py-4 container">
+            <form class="d-flex">
+                {% csrf_token %}
+                <input type="email" autocomplete="off" name="email" class="form-control email">
+                <button hx-post="{% url 'notification' %}" hx-target="#data" class="btn btn-success">Envoyer</button>
+            </form>
+        </div>
+
+        <div id="data" class="py-5">
+            {% include 'snippets/table.html' %}
+        </div>
+    </section>
+{% endblock content %}
+
+
+{% block js %}
+
+    <script>
+        const notifyWebsocket = new WebSocket(
+            'ws://' + window.location.host + '/ws/notify/'
+        );
+
+        notifyWebsocket.onopen = function(e){
+            console.log('Connection established successfully', e);
+        };
+
+        notifyWebsocket.onclose = function(e){
+            console.log('Connection closed successfully', e);
+        };
+
+        notifyWebsocket.onmessage = function(e){
+            const data = JSON.parse(e.data);
+            console.log('Message received', data);
+            setMessage(data.message)
+        };
+
+        function setMessage(message) {
+            var newLi = document.createElement('li');
+            newLi.className = 'dropdown-item py-2 w-100'
+
+            var img = document.createElement('img');
+            img.setAttribute('src', "/static/images/user.png");
+            img.setAttribute('width', '40')
+            img.setAttribute('height', '40')
+            newLi.appendChild(img)
+            var textNode = document.createTextNode(message)
+            newLi.appendChild(textNode);
+
+            var divElt = document.getElementById('notify')
+            divElt.appendChild(newLi)
+
+            //count
+            let count = document.getElementById('count').getAttribute('data-count');
+            count++;
+            document.getElementById('count').setAttribute('data-count', count);
+            document.getElementById('count').innerHTML = count;
+        };
+        
+    </script>
+
+{% endblock js %}
+    
+    

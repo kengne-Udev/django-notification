@@ -1,0 +1,58 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg fixed-top bg-warning">
+    <div class="container">
+        <a role="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false">
+            <img src="{% static 'images/notification.png' %}" width="30" height="30" alt="logo">
+        </a>
+        <a class="navbar-brand" href="#">Notification</a>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto mb-lg-0">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active" aria-current="page">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link active" aria-current="page">Post</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link active" aria-current="page">Comment</a>
+                </li>
+            </ul>
+
+            <div></div>
+
+            <div class="d-flex align-items-center">
+                <div class="dropdown">
+                    <img role="button" class="dropdown-toggle" src="{% static 'images/user.png' %}" width="40" height="40" alt="profile" data-bs-toggle="dropdown" aria-expanded="false">
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li class="dropdown-item active"><a href="#">profile</a></li>
+                        <li class="dropdown-item"><a href="#">settings</a></li>
+                        <li class="dropdown-item"><a href="#">logout</a></li>
+                        <li class="dropdown-item"><a href="#">login</a></li>
+                        <li class="dropdown-item"><a href="#">register</a></li>
+                    </ul>
+                </div>
+
+                <div class="mx-2">
+                    <span>
+                        <i class="fas fa-user"></i>
+                    </span>
+                    <span>
+                        <i class="fas fa-envelope mx-2 position-relative">
+                            <span class="icon-count position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">5</span>
+                        </i>
+                    </span>
+                    <span class="dropdown">
+                        <i role="button" class="fas fa-bell position-relative" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="icon-count position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="count" data-count="0"></span>
+                        </i>
+                        <div class="dropdown-menu dropdown-menu-dark" id="notify">
+                            
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
